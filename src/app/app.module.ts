@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
+// import { PostsService } from './posts/posts.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     MatToolbarModule,
   ],
   providers: [],
+  // @Injectable({providedIn: 'root'}) automatically adds a service to root-level providers
+  // providers: [PostsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
