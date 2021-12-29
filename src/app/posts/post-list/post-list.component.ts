@@ -19,7 +19,7 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   private postsSub: Subscription;
 
-  // public keyword on constructor automatically adds and sets this property from the constructor
+  // public keyword on constructor automatically adds and sets corresponding property
   // postsService: PostsService;
 
   constructor(public postsService: PostsService) {
