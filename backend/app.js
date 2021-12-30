@@ -23,7 +23,7 @@ app.post('/api/posts', (req, res, next) => {
   const post = req.body;
   console.log(post);
   res.status(201).json({
-    message: 'Post added successfully',
+    message: 'Post added successfully'
   });
 });
 
@@ -32,17 +32,17 @@ app.get('/api/posts', (req, res, next) => {
     {
       id: 'gdhsjg',
       title: 'First server-side post',
-      content: 'Some content',
+      content: 'Some content'
     },
     {
       id: 'wqewewewe',
       title: 'Second server-side post',
-      content: 'More content',
-    },
+      content: 'More content'
+    }
   ];
   res.status(200).json({
     message: 'Posts fetched successfully',
-    posts,
+    posts
   });
 });
 

@@ -20,7 +20,7 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     AppComponent,
     HeaderComponent,
     PostCreateComponent,
-    PostListComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
@@ -31,11 +31,11 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     MatCardModule,
     MatExpansionModule,
     MatInputModule,
-    MatToolbarModule,
+    MatToolbarModule
   ],
   providers: [],
   // @Injectable({providedIn: 'root'}) automatically adds a service to root-level providers
   // providers: [PostsService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
