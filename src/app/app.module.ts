@@ -10,20 +10,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 // import { PostsService } from './posts/posts.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    PostCreateComponent,
-    PostListComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, PostCreateComponent, PostListComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
