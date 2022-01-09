@@ -8,6 +8,8 @@ const postRoutes = require('./routes/posts');
 const app = express();
 
 // Connect to MongoDB
+//
+// NOTE: If you are using MongoDB Atlas, make sure that Network Access is configured for your IP address
 const mongoUser = process.env.MONGODB_USER;
 const mongoPassword = process.env.MONGODB_PASSWORD;
 const mongoHost = process.env.MONGODB_HOST;
