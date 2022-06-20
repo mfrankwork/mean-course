@@ -42,6 +42,7 @@ router.get('', (req, res, next) => {
       return Post.count();
     })
     .then((count) => {
+      console.debug(`[${req.id}] Posts fetched successfully`);
       res.status(200).json({
         message: 'Posts fetched successfully',
         posts: fetchedPosts,
@@ -58,6 +59,7 @@ router.post('', multer({ storage }).single('image'), (req, res, next) => {
     imagePath: url + '/images/' + req.file.filename
   });
   post.save().then((createdPost) => {
+    console.debug(`[${req.id}] Post added successfully: ${createdPost._id}`);
     res.status(201).json({
       message: 'Post added successfully',
       post: {
@@ -74,8 +76,10 @@ router.post('', multer({ storage }).single('image'), (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   Post.findById(req.params.id).then((post) => {
     if (post) {
+      console.debug(`[${req.id}] Post found: ${req.params.id}`);
       res.status(200).json(post);
     } else {
+      console.debug(`[${req.id}] Post not found: ${req.params.id}`);
       res.status(404).json({ message: 'Post not found!' });
     }
   });
@@ -97,22 +101,24 @@ router.put('/:id', multer({ storage }).single('image'), (req, res, next) => {
   });
   Post.updateOne({ _id: req.params.id }, post)
     .then((result) => {
+      console.debug(`[${req.id}] Post updated: ${req.params.id}`);
       console.log(result);
       res.status(200).json({ message: 'Update successful' });
     })
     .catch((err) => {
-      console.error(`UPDATE FAILED: ${err.message}`);
+      console.error(`[${req.id}] UPDATE FAILED: ${err.message}`);
     });
 });
 
 router.delete('/:id', (req, res, next) => {
   Post.deleteOne({ _id: req.params.id })
     .then((result) => {
+      console.debug(`[${req.id}] Post deleted: ${req.params.id}`);
       console.log(result);
       res.status(200).json({ message: 'Post deleted' });
     })
     .catch((err) => {
-      console.error(`DELETE FAILED: ${err.message}`);
+      console.error(`[${req.id}]DELETE FAILED: ${err.message}`);
     });
 });
 
