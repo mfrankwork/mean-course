@@ -22,6 +22,7 @@ router.post('/signup', (req, res, next) => {
         });
       })
       .catch((err) => {
+        console.error('Error:', err);
         res.status(500).json({
           error: err
         });
@@ -34,6 +35,7 @@ router.post('/login', (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
+        console.error('User email not found');
         return res.status(401).json({
           message: 'Auth failed'
         });
@@ -43,6 +45,7 @@ router.post('/login', (req, res, next) => {
     })
     .then((result) => {
       if (!result) {
+        console.error('Password does not match');
         return res.status(401).json({
           message: 'Auth failed'
         });
@@ -56,6 +59,7 @@ router.post('/login', (req, res, next) => {
       });
     })
     .catch((err) => {
+      console.error('Error:', err);
       res.status(401).json({
         message: 'Auth failed'
       });
