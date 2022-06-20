@@ -4,12 +4,14 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const postRoutes = require('./routes/posts');
+const userRoutes = require('./routes/user');
 
 const app = express();
 
 // Connect to MongoDB
 //
-// NOTE: If you are using MongoDB Atlas, make sure that Network Access is configured for your IP address
+// NOTE: If you are using MongoDB Atlas, make sure that Network Access is configured for your IP address!
+// NOTE: retryWrites=true is optional in MongoDB connection string
 const mongoUser = process.env.MONGODB_USER;
 const mongoPassword = process.env.MONGODB_PASSWORD;
 const mongoHost = process.env.MONGODB_HOST;
@@ -36,5 +38,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/posts', postRoutes);
+app.use('/api/user', userRoutes);
 
 module.exports = app;

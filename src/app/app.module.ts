@@ -16,12 +16,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 // import { PostsService } from './posts/posts.service';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LoginComponent, PostCreateComponent, PostListComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    LoginComponent,
+    SignupComponent,
+    PostCreateComponent,
+    PostListComponent
+  ],
   imports: [
     AppRoutingModule,
     BrowserModule,
