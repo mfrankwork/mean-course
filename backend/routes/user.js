@@ -32,11 +32,12 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
+  console.debug(`[${req.id}] Attempting to login: ${req.body.email}`);
   let fetchedUser;
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
-        console.error(`[${req.id}] User email not found: ${user.email}`);
+        console.error(`[${req.id}] User email not found`);
         return res.status(401).json({
           message: 'Auth failed'
         });
@@ -46,7 +47,7 @@ router.post('/login', (req, res, next) => {
     })
     .then((result) => {
       if (!result) {
-        console.error(`[${req.id}] Password does not match for: ${fetchedUser.email}`);
+        console.error(`[${req.id}] Password does not match}`);
         return res.status(401).json({
           message: 'Auth failed'
         });
@@ -54,7 +55,7 @@ router.post('/login', (req, res, next) => {
       const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id }, 'secret_this_should_be_longer', {
         expiresIn: '1h'
       });
-      console.debug(`[${req.id}] User logged in successfully: ${fetchedUser.email}`);
+      console.debug(`[${req.id}] User logged in successfully`);
       res.status(200).json({
         message: 'User logged in successfully',
         token
@@ -62,7 +63,7 @@ router.post('/login', (req, res, next) => {
     })
     .catch((err) => {
       console.error(`[${req.id}] Error: ${err}`);
-      res.status(401).json({
+      return res.status(401).json({
         message: 'Auth failed'
       });
     });
