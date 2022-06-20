@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const requestId = require('express-request-id');
 const mongoose = require('mongoose');
 const path = require('path');
 
@@ -25,6 +26,8 @@ mongoose
   .catch((err) => {
     console.error('Connection failed!', err);
   });
+
+app.use(requestId());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false })); // NOTE: Not necessary for this application
