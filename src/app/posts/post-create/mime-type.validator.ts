@@ -39,8 +39,8 @@ export const mimeType = (
           break;
 
         // Anything else is invalid
-        default:
-          isValid = false; // Or you can use the blob.type as fallback
+        default: // Or you can use the blob.type as fallback
+          isValid = false;
           break;
       }
 
